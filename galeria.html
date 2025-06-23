@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería | Cafetería UTP</title>
+    <link rel="shortcut icon" href="img/LogoCafe.webp" type="image/x-icon">
+
+    <link rel="stylesheet/less" type="text/css" href="galeria.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12hP1JpIPli+Azbu1BjmaDxmWE9vLMtFtIANo/rmJf7nL4x4"
+        crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="menu container" id="menu container">
+            <a href="index.html" class="logo"><img src="img/LogoCafe.webp" alt="" class="MainLogo"></a>
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="menu.html">Menú </a></li>
+                    <li><a href="Reserva.html">Reserva</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <h1>CAFETERIA UTP</h1>
+            <p><strong>¡Galería!</strong></p>
+            <p>
+                Bienvenidos a nuestra galería, donde podrás explorar lo mejor de Cafetería UTP: deliciosos platillos,
+                bebidas y el ambiente único que ofrecemos. ¡Te esperamos!
+            </p>
+        </div>
+    </header>
+
+
+    <!-- Galería de imagenes -->
+    <h2 class="galeriatitulo">Imagenes Relevantes</h2>
+    <div class="row galery">
+        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <img src="img_galeria/im1.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Espaciosa zona de mesas con sillas rojas y grandes ventanales que ofrecen una vista al campus, perfecta para disfrutar de una comida o estudiar."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+            <!--en "data-description" se agrega el texto para el modal-->
+
+            <img src="img_galeria/im2.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Vista detallada del área de preparación, donde se observa el menú principal con opciones variadas como sándwiches, bebidas y snacks."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+            <img src="img_galeria/im3.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Elegantes vitrinas que muestran una variedad de postres, bebidas frías y snacks frescos disponibles para los estudiantes y profesores."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+            <img src="img_galeria/im4.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Vista del personal en acción, preparando bebidas y comidas en la barra principal de la cafetería."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <img src="img_galeria/im5.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Detalle de los productos disponibles, como panes, pasteles y otros aperitivos en la vitrina iluminada."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+            <img src="img_galeria/im6.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Espacio moderno con un diseño atractivo, mostrando las vitrinas de productos, la barra de atención y las luminarias colgantes."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+            <img src="img_galeria/im7.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Fachada de vidrio y puertas de acceso que conectan con el edificio principal, brindando una entrada luminosa y acogedora."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+            <img src="img_galeria/im8.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Imagen del edificio C destacando su diseño contemporáneo y la ubicación estratégica de la cafetería dentro del campus."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+            <img src="img_galeria/im9.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Vitrinas tentadoras exhiben una variedad de delicias recién horneadas en esta acogedora cafetería universitaria de decoración moderna."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+            <img src="img_galeria/im10.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Estudiantes esperando su turno en la cafetería, destacando el ambiente amigable y el eficiente servicio."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+            <img src="img_galeria/im11.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Imagen de estudiantes entrando al edificio en dirección a la cafetería, resaltando la actividad constante en esta zona."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+
+            <img src="img_galeria/im12.jpg" class="w-100 shadow-1-strong rounded mb-4 flipSide-180"
+                data-description="Estudiantes disfrutando del servicio en un espacio cómodo y moderno."
+                data-toggle="modal" data-target="#imageModal" onclick="showModal(this)" />
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true"
+        role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="spanX">&times;</span>
+                        </button>
+                    </div>
+
+                    <img src="" id="modalImage" class="img-fluid">
+                    <p id="modalDescription"
+                        style="text-align: center; margin-top: 10px;margin-bottom: -5px;font-size: 19px;color: rgb(70, 69, 69);font-weight: bold;">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Horario de Reservas (online):</h4>
+                    <ul>
+                        <li>Lunes a Viernes: 8:00 AM - 2:00 PM</li>
+                        <li>Nota: Las reservas deben ser recogidas el mismo día.</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Información de la Cafetería:</h4>
+                    <ul>
+                        <li>Ubicación: Campus Universitario, Chorrillos, Lima</li>
+                        <li>Teléfono: +51 987 654 321</li>
+                        <li>Email: contacto@cafeteriauniversitaria.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Javascript para el header -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('menu container');
+            if (window.scrollY > 80) { // Cambia este valor según el punto en el que quieres que cambie el color
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+    </script>
+
+    <!-- Script para el Modal -->
+    <script>
+        function showModal(element) {
+            var imageUrl = element.src;
+            var description = element.getAttribute("data-description");
+
+            var modalImage = document.getElementById("modalImage");
+            var modalDescription = document.getElementById("modalDescription");
+
+            modalImage.src = imageUrl;
+            modalDescription.textContent = description;
+        }
+    </script>
+
+
+    <!-- SCRIPTS DE DISEÑO (JQUERY Y BOOTSTRAP) -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

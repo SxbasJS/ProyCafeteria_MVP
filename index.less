@@ -1,0 +1,826 @@
+@color1: #55311B;
+@color2: #DBC8B3;
+@color3: #784F2F;
+
+/*Fuente usada para el tipo de letra */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+
+.header {
+    /*Imagen de fondo del encabezado */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/bg.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.scrolled {
+    background-color: #55311B;
+    /*Color del nuevo header al desplazar el scrollbar  */
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 20;
+    max-width: 100% !important;
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+    color: #FFFDFC;
+    font-size: 25px;
+    font-weight: 800;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.MainLogo {
+    max-height: 88px;
+    /* Ajusta la altura máxima del logo según lo necesites */
+    width: 60px;
+    border-radius: 39px;
+
+}
+
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+    margin-bottom: -20px;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #FFFDFC;
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu .navbar ul li a:hover {
+    color: #13100f;
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: -55px !important;
+}
+
+.header-content h1 {
+    font-size: 75px;
+    line-height: 80px;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+.header-content p {
+    font-size: 16px;
+    color: #c5c5c5;
+    padding: 0 250px;
+    margin-bottom: 25px;
+
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 35px;
+    background-color: #848382;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+.btn-1:hover {
+    background-color: #ebad8d;
+
+}
+
+
+/*CARRUSEL*/
+.rating i {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-item.active .rating i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.rating i:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.rating i:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.rating i:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.rating i:nth-child(4) {
+    transition-delay: 0.8s;
+}
+
+.rating i:nth-child(5) {
+    transition-delay: 1s;
+}
+
+
+/* Animacion estrellas */
+.rating i {
+    opacity: 0;
+    transform: scale(0);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-item.active .rating i {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.rating i:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.rating i:nth-child(2) {
+    transition-delay: 0.4s;
+}
+
+.rating i:nth-child(3) {
+    transition-delay: 0.6s;
+}
+
+.rating i:nth-child(4) {
+    transition-delay: 0.8s;
+}
+
+.rating i:nth-child(5) {
+    transition-delay: 1s;
+}
+
+.carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    /* Posiciona el título y subtítulo en la parte inferior */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente para mayor legibilidad */
+    padding: 100px 20px;
+    border-radius: 5px;
+}
+
+.carousel-caption h2 {
+    font-size: 2.5rem;
+    /* Tamaño del título */
+    margin-bottom: 0;
+    /* Reduce el margen inferior del título */
+}
+
+.carousel-caption p {
+    font-size: 1.2rem;
+    /* Tamaño del subtítulo */
+    margin-top: 5px;
+    /* Ajuste de margen superior */
+    color: #fff;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 70vh;
+    /* Ocupa toda la altura de la ventana */
+    object-fit: cover;
+    margin-top: 24px;
+}
+
+.carousel-item2 img {
+    width: 100%;
+    height: 40vh;
+    /* Ocupa toda la altura de la ventana */
+    object-fit: cover;
+    margin-top: 24px;
+}
+
+
+/*CONTENIDO DESTACADO EN INICIO*/
+/*BOTONES*/
+.btn-1 {
+    display: inline-block;
+    padding: 11px 25px;
+    background-color: #4E3B2A;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 20px;
+    font-family: 'BeBas Neue';
+    margin: 20px 0;
+    border: 0;
+}
+
+.btn-1:hover {
+    background-color: orange;
+}
+
+.custom-modal {
+    background-color: white;
+}
+
+
+/*SECCIÓN WELCOME*/
+.welcome {
+    display: flex;
+    width: 100%;
+
+}
+
+.welcome1 {
+    background-image: url(img/blog3.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+
+}
+
+.welcome2 {
+    width: 50%;
+    padding: 50px 100px 50px 65px;
+    background-color: #DBC8B3;
+}
+
+.welcome2 .b2 {
+    display: inline-block;
+}
+
+.welcome2 p {
+    margin: 0px;
+}
+
+
+/*HEADINGS*/
+.tituloContenidoDestacado {
+    font-size: 90px;
+    line-height: 100px;
+    color: rgb(224, 171, 101);
+    text-transform: uppercase;
+    font-family: 'BeBas Neue', cursive;
+    margin-bottom: 2px;
+}
+
+h3 {
+    font-size: 22px;
+    color: rgb(230, 180, 115);
+}
+
+
+/*PÁRRAFOS*/
+.service p {
+    font-size: 16px;
+    color: white;
+    margin: 25px 0;
+    padding: 10px;
+    margin: 0 10px;
+}
+
+.service-txt p {
+    padding: 50px 150px;
+    color: gray;
+}
+
+.direccion-content p {
+    text-align: center;
+    font-size: 18px;
+}
+
+
+/*SECCIÓN SERVICE*/
+.service {
+    padding: 20px 0;
+    text-align: center;
+    max-width: 92% !important;
+}
+
+.service .tituloContenidoDestacado1 {
+    display: inline-block;
+    border-bottom: 3px solid #db8b3a;
+    padding-bottom: 0.5px;
+    font-size: 90px;
+    line-height: 100px;
+    color: rgb(224, 171, 101);
+    text-transform: uppercase;
+    font-family: 'BeBas Neue', cursive;
+    margin-bottom: 2px;
+}
+
+.service .descripcion {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 98%;
+    padding: 10px;
+    background-color: #e8c39e;
+    border-radius: 15px;
+    color: rgb(31, 29, 29);
+}
+
+.service-txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    border: 1px solid red;
+    width: 80px;
+}
+
+.service-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100% !important;
+}
+
+.service1 {
+    background-color: #e8c39e;
+    padding: 0;
+    margin: 0 10px;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.service1 p {
+    color: rgb(31, 29, 29);
+}
+
+.service-group p {
+    margin-bottom: 0px;
+}
+
+.service1:hover {
+    transform: scale(1.05);
+}
+
+.service1 img {
+    width: 50%;
+    height: 30%;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    transition: transform 0.4s ease;
+}
+
+.service1 img:hover {
+    transform: scale(1.1) rotate(3deg);
+}
+
+.tituloContenidoDestacado,
+.btn-1 {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.service1:hover .tituloContenidoDestacado,
+.service1:hover .btn-1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service1 .img1 {
+    width: 60% !important;
+    height: 30%;
+    margin-top: 60px;
+    margin-bottom: 10px;
+}
+
+.service1,
+.service2 {
+    height: 400px;
+}
+
+.service1 h3 {
+    font-size: 30px;
+    color: #4F4F4F;
+}
+
+.service1 a {
+    color: rgb(252, 252, 252);
+    font-size: 16px;
+}
+
+.service1 .btn-1 {
+    background-color: #615e5b !important;
+}
+
+
+/*SECCIÓN BOX*/
+.box {
+    display: flex;
+}
+
+.titulo {
+    flex-direction: row;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 100px;
+}
+
+.mapa {
+    flex-direction: row-reverse;
+    padding: 15px;
+    background-color: antiquewhite;
+}
+
+
+/*RESEÑAS*/
+.tituloReseñas {
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 50px;
+    color: #615e5b;
+    text-transform: uppercase;
+    font-family: 'BeBas Neue', cursive;
+    margin-bottom: 2px;
+    margin-left: 15px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recomendacionesReseña {
+    color: #ac8d6f;
+    margin-left: 20px;
+}
+
+.reseña {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80% !important;
+    margin: 20px 0;
+    background-color: #f0f0f09e;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reseña .texto {
+    padding: 10px;
+}
+
+.reseña p {
+    color: grey;
+
+}
+
+.rating {
+    color: #f39c12;
+    /* Color de las estrellas */
+    font-size: 40px !important;
+    /* Tamaño de las estrellas */
+    margin-left: 20px;
+}
+
+.rating .fa-star-o {
+    color: #343434;
+    /* Color de las estrellas vacías */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: black !important;
+    /* Cambia el color a negro */
+}
+
+
+/*NOSOTROS*/
+.nosotros {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+    /* Centra la fila y ajusta el margen */
+    row-gap: 25px;
+    column-gap: 25px;
+}
+
+.infoPrincipios {
+    align-items: center;
+    padding: 5px;
+    /* Espacio interno alrededor del contenido */
+    background-color: #f7f4f4;
+    /* Color de fondo blanco para las columnas */
+    border-radius: 10px;
+    /* Bordes redondeados opcionales */
+    box-shadow: 2px 4px rgba(255, 0, 0, 0.1);
+    /* Sombra sutil */
+    margin: 0 10px;
+    /* Espacio entre las columnas */
+    flex: 1;
+}
+
+.infoTexto {
+    padding: 20px;
+}
+
+.infoTexto p {
+    color: gray !important;
+}
+
+.infoPrincipios img {
+    margin-top: 10px;
+    /* Espacio superior para las imágenes */
+    border-radius: 5px;
+    /* Bordes redondeados opcionales para las imágenes */
+    padding: 20px;
+}
+
+.infoNosotros {
+    display: flex;
+    justify-content: center;
+    max-width: 800px;
+    /* Ajusta el ancho máximo según tu preferencia */
+    width: 100%;
+    margin: 20px 0;
+    /* Espacio entre las reseñas */
+    background-color: #f0f0f09e;
+    /* Cambia este color según tu preferencia */
+    border-radius: 10px;
+    /* Bordes redondeados opcionales */
+    padding: 20px;
+    /* Espacio interno alrededor del contenido */
+    box-shadow: 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra para darle un efecto de profundidad */
+
+}
+
+
+/*FOOTER*/
+.footer {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f0f0f0e7;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-links {
+    margin: 0 15px;
+    padding: 0 15px;
+    max-width: 200px;
+}
+
+.footer-links h4 {
+    color: #1d1d1d9a;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links li {
+    color: #4b4b4bc0;
+    text-decoration: none;
+}
+
+@media(max-width:991px) {
+    body {
+        font-size: 18px;
+
+    }
+
+    h3 {
+        padding: 10px;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    .menu {
+        padding: 5px;
+    }
+
+    .logo {
+        margin-bottom: 5px;
+        margin-left: -15px;
+    }
+
+    .menu label {
+        display: initial;
+        margin-bottom: 5px;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #55311B;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+    }
+
+    .header {
+        min-height: 0vh;
+    }
+
+    .header-content {
+        padding: 100px 30px;
+    }
+
+    .header-content p {
+        padding: 0;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .service-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-left: -6px;
+    }
+
+    .service1:hover {
+        transform: none;
+    }
+
+    .welcome2 {
+        padding: 4px;
+        text-align: center;
+    }
+
+    .boton-mapa {
+        margin-bottom: 15px;
+
+    }
+
+    .tituloIntroHab {
+        text-align: center;
+    }
+
+    .rating i {
+        font-size: 28px;
+    }
+
+    .img img:hover {
+        transform: scale(1.05);
+    }
+
+    .carousel-inner .carousel-item .reseña .img img {
+        max-width: 100%;
+        height: 80% !important;
+
+    }
+
+    .nosotros {
+        max-width: 95%;
+    }
+
+}
+
+//Animacion para la Seccion Menu Relevante
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service1,
+.service2,
+.service-txt {
+    opacity: 0;
+    transform: translateY(20px);
+    /* Inicia ligeramente abajo */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.service1.visible,
+.service2.visible,
+.service-txt.visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Suben a su posición original */
+}
+
+
+//Animacion para la seccion de informacion
+@keyframes flipIn {
+    0% {
+        opacity: 0;
+        transform: rotateY(-90deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg);
+    }
+}
+
+.infoPrincipios {
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.infoPrincipios.visible {
+    animation: flipIn 0.7s ease-out forwards;
+}
+
+
+/* Estilos específicos para móviles */
+@media (max-width: 576px) {
+    .modal-lg {
+        max-width: 90%;
+        margin-right: 20px;
+        /* Aumenta el ancho del modal en móviles */
+        margin-left: 40px;
+    }
+
+    #modalImage {
+        height: auto;
+    }
+
+    #modalDescription {
+        font-size: 1rem;
+        /* Ajusta el tamaño del texto en móviles */
+        text-align: center;
+        /* Centra el texto en móviles */
+    }
+}

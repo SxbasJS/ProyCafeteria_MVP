@@ -1,0 +1,541 @@
+@color1: #55311B;
+@color2: #DBC8B3;
+@color3: #784F2F;
+
+/*Fuente usada para el tipo de letra */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+.header {
+    /*Imagen de fondo del encabezado */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/bg.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.scrolled {
+    background-color: #55311B;
+}
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 20;
+    max-width: 100% !important;
+    transition: background-color 0.3s ease;
+}
+
+.logo {
+    color: #FFFDFC;
+    font-size: 25px;
+    font-weight: 800;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.MainLogo {
+    max-height: 88px;
+    /* Ajusta la altura máxima del logo según lo necesites */
+    width: 60px;
+    border-radius: 39px;
+
+}
+
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+    margin-bottom: -20px;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #FFFDFC;
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu .navbar ul li a:hover {
+    color: #13100f;
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: -55px !important;
+}
+
+.header-content h1 {
+    font-size: 75px;
+    line-height: 80px;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+.header-content p {
+    font-size: 16px;
+    color: #c5c5c5;
+    padding: 0 250px;
+    margin-bottom: 25px;
+
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 35px;
+    background-color: #848382;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+.btn-1:hover {
+    background-color: #ebad8d;
+
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Evita que los hijos se estiren */
+}
+
+
+//PARA MAYOR INFORMACION:
+h3 {
+    font-size: 22px;
+    color: rgb(230, 180, 115);
+}
+
+/*FOOTER*/
+.footer {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f0f0f0e7;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-links {
+    margin: 0 15px;
+    padding: 0 15px;
+    max-width: 200px;
+}
+
+.footer-links h4 {
+    color: #1d1d1d9a;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links li {
+    color: #4b4b4bc0;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Suaviza la transición del color */
+}
+
+.footer-links a:hover {
+    color: #1d1d1d; /* Negro más intenso */
+}
+
+// Contactos
+//Formulario
+.contenedorcontact {
+    max-width: 800px;
+    background: @color2;
+    padding: 0 40px;
+}
+
+.text-center {
+    padding: 20px;
+    font-size: 45px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    color: @color1;
+}
+
+.form-label {
+    font-weight: 7000;
+    color: @color1;
+}
+
+/* Contenedor del acordeón */
+.FAQTITLE h2 {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 60px;
+}
+
+.accordion {
+    max-width: 1100px;
+    margin: 60px auto;
+    border: 1px solid @color2;
+    box-shadow: 0 4px 8px @color2;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion:hover {
+    box-shadow: 0 8px 16px @color2;
+}
+
+/* Elementos del acordeón */
+.accordion-item {
+    border-bottom: 1px solid @color2;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+/* Encabezado del acordeón */
+.accordion-header {
+    margin: 4px;
+    padding: 0;
+    background-color: #f8f9fa;
+
+}
+
+.accordion-button {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: left;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: @color1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: @color2;
+    color: @color1;
+}
+
+/* Símbolo "+" */
+.accordion-button:after {
+    content: '\002B';
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: @color1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Símbolo "-" */
+.accordion-button.collapsed:after {
+    content: '\2212';
+    transform: rotate(180deg);
+}
+
+.accordion-body {
+    padding: 1.5rem;
+    background-color: white;
+    display: none;
+    line-height: 1.6;
+    animation: slide-down 0.3s ease forwards;
+    overflow: hidden;
+    border-left: 4px solid @color1;
+}
+
+.accordion-body.show {
+    display: block;
+}
+
+@keyframes slide-down {
+    from {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    to {
+        max-height: 500px;
+        opacity: 1;
+    }
+}
+
+.accordion-button:focus {
+    outline: none;
+}
+
+.accordion-button.collapsed {
+    color: #574949;
+}
+
+.iconos-redes a {
+    font-size: 30px;
+    margin-right: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.iconos-redes {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.iconos-redes a:hover {
+    transform: scale(1.2);
+}
+
+.redes {
+    color: @color2;
+}
+
+.form-label {
+    transition: transform 1s ease;
+}
+
+.form-label:hover {
+    transform: translate(0, -10px);
+}
+
+.form-control {
+    transition: transform 0.8s ease-in-out, border-color 0.7s ease;
+}
+
+.form-control:hover {
+    transform: scale(1.03);
+    border-color: @color1;
+}
+
+.container .redes {
+    height: auto !important; 
+}
+
+//ANIMACIONES PARA CONTACTOS ------------------------------
+
+.titulo-preguntas-frecuentes {
+    color: @color1;
+    transition: transform 1s ease;
+}
+
+.titulo-preguntas-frecuentes:hover {
+    transform: translate(0, -10px);
+}
+
+
+//Titulo Contactos
+.titulo-contacto {
+    transition: transform 1s ease;
+}
+
+.titulo-contacto:hover {
+    transform: translate(0, -10px);
+}
+
+//Animación al boton
+.btn.btn-primary.btn-enviar {
+    background-color: @color3;
+    border: 2px solid @color1;
+    transition: transform 0.3s ease;
+}
+
+.btn.btn-primary.btn-enviar:hover {
+    transform: translateY(-5px);
+}
+
+/* Estilos específicos para móviles */
+@media (max-width: 576px) {
+    .modal-lg {
+        max-width: 90%;
+        margin-right: 20px;
+        /* Aumenta el ancho del modal en móviles */
+        margin-left: 40px;
+    }
+
+    #modalImage {
+        height: auto;
+    }
+
+    #modalDescription {
+        font-size: 1rem;
+        /* Ajusta el tamaño del texto en móviles */
+        text-align: center;
+        /* Centra el texto en móviles */
+    }
+}
+@media(max-width:991px) {
+    body {
+        font-size: 18px;
+
+    }
+
+    h3 {
+        padding: 10px;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    .menu {
+        padding: 5px;
+    }
+
+    .logo {
+        margin-bottom: 5px;
+        margin-left: -15px;
+    }
+
+    .menu label {
+        display: initial;
+        margin-bottom: 5px;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #55311B;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+    }
+
+    .header {
+        min-height: 0vh;
+    }
+
+    .header-content {
+        padding: 100px 30px;
+    }
+
+    .header-content p {
+        padding: 0;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .service-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-left: -6px;
+    }
+
+    .service1:hover {
+        transform: none;
+    }
+
+    .welcome2 {
+        padding: 4px;
+        text-align: center;
+    }
+
+    .boton-mapa {
+        margin-bottom: 15px;
+
+    }
+
+    .tituloIntroHab {
+        text-align: center;
+    }
+
+    .rating i {
+        font-size: 28px;
+    }
+
+    .img img:hover {
+        transform: scale(1.05);
+    }
+
+    .carousel-inner .carousel-item .reseña .img img {
+        max-width: 100%;
+        height: 80% !important;
+
+    }
+
+    .nosotros {
+        max-width: 95%;
+    }
+
+}
+
+@media(min-width: 1024px) and (max-width: 1200px) {
+    .header .header-content p {
+        font-size: 30px;
+    }
+
+    .header .header-content {
+        max-width: 100%;
+    }
+
+    .navbar ul li a {
+        font-size: 32px !important;
+    }
+}
+
+@media(max-width:400px) {
+    body {
+        position: absolute;
+    }
+}

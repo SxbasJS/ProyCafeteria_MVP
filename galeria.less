@@ -1,0 +1,451 @@
+@color1: #55311B;
+@color2: #DBC8B3;
+@color3: #784F2F;
+
+/*Fuente usada para el tipo de letra */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+}
+
+
+.header {
+    /*Imagen de fondo del encabezado */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/bg.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.scrolled {
+    background-color: #55311B;
+    /*Color del nuevo header al desplazar el scrollbar  */
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 20;
+    max-width: 100% !important;
+    transition: background-color 0.3s ease;
+}
+
+
+.logo {
+    color: #FFFDFC;
+    font-size: 25px;
+    font-weight: 800;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+
+.MainLogo {
+    max-height: 88px;
+    /* Ajusta la altura máxima del logo según lo necesites */
+    width: 60px;
+    border-radius: 39px;
+
+}
+
+
+.menu .navbar ul li {
+    position: relative;
+    float: left;
+    margin-bottom: -20px;
+}
+
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: #FFFDFC;
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.menu .navbar ul li a:hover {
+    color: #13100f;
+}
+
+
+#menu {
+    display: none;
+}
+
+
+.menu-icono {
+    width: 25px;
+}
+
+
+.menu label {
+    cursor: pointer;
+    display: none;
+}
+
+
+.header-content {
+    text-align: center;
+    margin-bottom: -55px !important;
+}
+
+
+.header-content h1 {
+    font-size: 75px;
+    line-height: 80px;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+}
+
+
+.header-content p {
+    font-size: 16px;
+    color: #c5c5c5;
+    padding: 0 250px;
+    margin-bottom: 25px;
+
+}
+
+
+.btn-1 {
+    display: inline-block;
+    padding: 11px 35px;
+    background-color: #848382;
+    color: #F9FAFC;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+
+.btn-1:hover {
+    background-color: #ebad8d;
+
+}
+
+
+/*FOOTER*/
+.footer {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #f0f0f0e7;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-links {
+    margin: 0 15px;
+    padding: 0 15px;
+    max-width: 200px;
+}
+
+.footer-links h4 {
+    color: #1d1d1d9a;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 5px;
+}
+
+.footer-links li {
+    color: #4b4b4bc0;
+    text-decoration: none;
+}
+
+@media(max-width:991px) {
+    body {
+        font-size: 18px;
+
+    }
+
+    h3 {
+        padding: 10px;
+    }
+
+    p {
+        padding: 10px;
+    }
+
+    .menu {
+        padding: 5px;
+    }
+
+    .logo {
+        margin-bottom: 5px;
+        margin-left: -15px;
+    }
+
+    .menu label {
+        display: initial;
+        margin-bottom: 5px;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #55311B;
+        display: none;
+    }
+
+    .menu .navbar ul li {
+        width: 100%;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+    }
+
+    .header {
+        min-height: 0vh;
+    }
+
+    .header-content {
+        padding: 100px 30px;
+    }
+
+    .header-content p {
+        padding: 0;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links {
+        max-width: 100%;
+        margin: 10px 0;
+    }
+
+    .service-group {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-left: -6px;
+    }
+
+    .service1:hover {
+        transform: none;
+    }
+
+    .welcome2 {
+        padding: 4px;
+        text-align: center;
+    }
+
+    .boton-mapa {
+        margin-bottom: 15px;
+
+    }
+
+    .tituloIntroHab {
+        text-align: center;
+    }
+
+    .rating i {
+        font-size: 28px;
+    }
+
+    .img img:hover {
+        transform: scale(1.05);
+    }
+
+    .carousel-inner .carousel-item .reseña .img img {
+        max-width: 100%;
+        height: 80% !important;
+
+    }
+
+    .nosotros {
+        max-width: 95%;
+    }
+
+}
+
+
+//ESTILO GALERIA
+/* Aumentar el tamaño máximo del modal */
+.modal-lg {
+    max-width: 50%;
+}
+
+
+/* Hacer que la imagen dentro del modal ocupe el máximo espacio posible */
+#modalImage {
+    width: 100%;
+    height: auto;
+}
+
+.galery {
+    max-width: 100%;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.shadow-1-strong:hover {
+    border: 3px solid white;
+    cursor: pointer;
+}
+
+
+/* Ajustar la altura de las imágenes */
+.galery img:nth-child(1),
+.galery img:nth-child(3) {
+    height: 330px;
+    width: auto;
+    object-fit: cover;
+}
+
+.galery img:nth-child(2),
+.galery img:nth-child(4) {
+    height: 530px;
+    width: auto;
+    object-fit: cover;
+}
+
+
+.close {
+    margin-top: -35px !important;
+    padding: 10px;
+
+}
+
+.spanX {
+    font-size: 32px;
+
+}
+
+.galeriatitulo {
+
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    padding-top: 50px;
+    font-size: 55px;
+    font-family: 'BeBas Neue', cursive;
+    color: #444444;
+    text-shadow: 2px 2px 4px rgba(20, 8, 8, 0.2);
+    border-bottom: 3px solid #4F4F4F;
+    background-color: #f0f0f0;
+}
+
+
+// En esta animación dará una vuelta la imagen que contenga la siguiente clase.        
+.flipSide-180 {
+    transition: .5s, color .10s;
+    -webkit-transition: .5s, color .10s;
+    -moz-transition: .5s, color .10s;
+}
+
+.flipSide-180:hover {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+
+/* Estilos específicos para móviles */
+@media (max-width: 576px) {
+    .modal-lg {
+        max-width: 90%;
+        margin-right: 20px;
+        /* Aumenta el ancho del modal en móviles */
+        margin-left: 40px;
+    }
+
+    #modalImage {
+        height: auto;
+    }
+
+    #modalDescription {
+        font-size: 1rem;
+        /* Ajusta el tamaño del texto en móviles */
+        text-align: center;
+        /* Centra el texto en móviles */
+    }
+}

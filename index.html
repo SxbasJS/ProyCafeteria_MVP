@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafetería UTP</title>
+    <link rel="shortcut icon" href="img/LogoCafe.webp" type="image/x-icon">
+    <!-- Less -->
+
+    <link rel="stylesheet/less" type="text/css" href="index.less" />
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12hP1JpIPli+Azbu1BjmaDxmWE9vLMtFtIANo/rmJf7nL4x4"
+        crossorigin="anonymous"></script>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- FontAwesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- Encabezado(header) -->
+    <header class="header">
+        <div class="menu container" id="menu container">
+            <a href="index.html" class="logo"><img src="img/LogoCafe.webp" alt="" class="MainLogo"></a>
+            <!-- Colocar el logo -->
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="menu.html">Menú</a></li>
+                    <li><a href="Reserva.html">Reserva</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <h1>CAFETERIA UTP</h1>
+            <p>
+                Bienvenido a la Cafetería UTP, tu lugar de descanso y energía en el campus Lima Sur. Disfruta de un
+                delicioso café, bocadillos frescos y un ambiente cómodo para estudiar, socializar o relajarte entre
+                clases.
+            </p>
+        </div>
+    </header>
+
+    <!-- Carrusel -->
+
+    <div class="p-0">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/1c/13/84/photo2jpg.jpg?w=600&h=400&s=1"
+                        class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4 font-weight-bold text-uppercase">Cafeteria UTP</h2>
+                        <p class="lead">Excelentes platillos para acompañar tu día </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/c1.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4 font-weight-bold text-uppercase">Cafeteria UTP</h2>
+                        <p class="lead">Un espacio acogedor para estudiar y relajarte</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="img/bg2.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4 font-weight-bold text-uppercase">Cafeteria UTP</h2>
+                        <p class="lead">Disfruta nuestras ofertas exclusivas </p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <br><br>
+
+    <!-- CONTENIDO DESTACADO -->
+    <section class="welcome" id="ubicacion">
+        <div class="welcome1"></div>
+        <div class="welcome2">
+            <h2>Espectacular Ubicación</h2>
+            <p class="b1">
+                Lo mejor para ustedes
+            </p>
+            <p class="b2">
+                Nos encontramos en una de las mejores zonas del
+                distrito de Villa el Salvador, permitiendo explorar una zona muy accesible para todos los estudiantes y
+                docentes .
+            </p>
+            <br>
+            <br>
+            <button type="button" class="btn boton-mapa" style="background-color: #e8c39e;" data-toggle="modal"
+                data-target="#myModal">¿Como Llegar?</button>
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header custom-modal">
+                            <h5 class="modal-title" id="exampleModalLabel">Ubícanos fácilmente</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15599.238169560922!2d-76.972071!3d-12.193359!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9a26836ac01%3A0x4fd233c0d43ca479!2sUniversidad%20Tecnol%C3%B3gica%20del%20Per%C3%BA%20UTP!5e0!3m2!1ses-419!2spe!4v1731362860306!5m2!1ses-419!2spe"
+                                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+
+    <main class="service container">
+        <div class="service-txt">
+            <h2 class="tituloContenidoDestacado1">Menu Relevante</h2>
+            <br>
+
+        </div>
+        <div class="service-group">
+            <div class="service1 service2">
+                <img class="img1" src="https://images.mrcook.app/recipe-image/0190b288-50b6-74c4-bc6f-e3ea75a87ac0" ">
+                <h3 class=" tituloContenidoDestacado">Avena</h3>
+
+                <a href="menu.html" class="btn-1">Informacion</a>
+            </div>
+            <div class="service1">
+                <img
+                    src="https://media.vogue.mx/photos/5e908c84e7952100082fdb15/master/w_1600%2Cc_limit/ensalada-de-frutas.jpg">
+                <h3 class="tituloContenidoDestacado">Ensalada de Frutas</h3>
+
+                <a href="menu.html" class="btn-1">Informacion</a>
+            </div>
+            <div class="service1">
+                <img
+                    src="https://images.rappi.pe/restaurants_background/748bb93e-dc8e-4fad-9bc7-e20e05aef05c-1713862655879.png">
+                <h3 class="tituloContenidoDestacado">Cono Pizza</h3>
+
+                <a href="menu.html" class="btn-1">Informacion</a>
+            </div>
+        </div>
+    </main>
+
+
+    <!-- CARRUSEL DE RESEÑAS -->
+
+    <div id="reseñaCarrusel" class="carousel slide" data-ride="carousel" style="text-align:center;">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #1
+                            </h2>
+                            <p>
+                                <strong>De: Rodrigo Huamani</strong><br> <br>
+                                El personal de la cafetería UTP siempre es muy atento y cordial, lo que hace que cada
+                                visita sea agradable. La atención es rápida y eficiente, permitiéndome disfrutar de mi
+                                bebida o snack sin tener que esperar mucho tiempo.
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">Buen servicio, siempre amables y rápidos.</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-1 img">
+                            <img src="img/uno.webp" style="width:100%">
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-1 img">
+                            <img src="https://cafedelaflor.com/images/productos/202306011605339.jpg" style="width:100%">
+                            <br><br>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #2
+                            </h2>
+                            <p>
+                                <strong>De: Veronika Falcon</strong><br><br>
+                                Los platillos que ofrecen en la cafetería son frescos y muy sabrosos. Desde las
+                                ensaladas hasta los sándwiches, siempre puedo contar con una comida deliciosa y bien
+                                preparada. ¡Es mi lugar favorito para almorzar entre clases!
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">La comida es excelente, siempre fresca y deliciosa.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #3
+                            </h2>
+                            <p>
+                                <strong>De: Sebastian Palacios</strong><br><br>
+                                La cafetería UTP tiene un ambiente perfecto para relajarse o estudiar. Con su música
+                                suave y el espacio cómodo, puedo disfrutar de mi café mientras me concentro en mis
+                                tareas. ¡Es el lugar perfecto para un descanso entre clases!
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">Ambiente acogedor, ideal para estudiar o relajarse.</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-1 img">
+                            <img src="https://thumbs.dreamstime.com/b/acogedor-rinc%C3%B3n-en-una-cafeter%C3%ADa-vac%C3%ADa-o-con-techo-de-plantas-verdes-interior-estilo-loft-espacio-para-copiar-171479107.jpg"
+                                style="width:100%">
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-1 img">
+                            <img src="img/c1.png" style="width:100%">
+                            <br><br>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #4
+                            </h2>
+                            <p>
+                                <strong>De: Samuel Rivas</strong><br><br>
+                                El café que preparan en la cafetería es de excelente calidad, siempre bien servido y con
+                                el sabor perfecto. Es ideal para mantenerme despierto durante las largas jornadas de
+                                estudio, ¡no hay mejor lugar para un buen café!
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">Me encanta el café, siempre preparado a la perfección.
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #5
+                            </h2>
+                            <p>
+                                <strong>De: Aaron Valdivia</strong><br><br>
+                                Como alguien que sigue una dieta saludable, me encanta que la cafetería UTP tenga
+                                opciones nutritivas y deliciosas. Puedo disfrutar de un smoothie, una ensalada o un wrap
+                                sin sentir que estoy comprometiendo mis hábitos alimenticios.
+
+
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">Ofrecen opciones saludables y deliciosas.</h3>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-1 img">
+                            <img src="https://alqueria.com.co/sites/default/files/styles/1327_612/public/2021-12/CH_Fotos_Ensalada-de-frutas_1400x700.jpg?h=8165685c&itok=S5QyTNb8
+                                style=" width:100%">
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="container-fluid contenedor">
+                    <div class="row reseña">
+                        <div class="col-md-6 col-sm-6 order-md-1 order-1 img">
+                            <img src="https://matchcafeteria.com/wp-content/uploads/2024/07/donde-tomar-un-buen-cafe-accesible.jpg"
+                                style="width:100%">
+                            <br><br>
+                        </div>
+                        <div class="col-md-6 col-sm-6 order-md-2 order-2 texto">
+                            <h2 style="font-family: 'Times New Roman', Times, serif;" class="tituloReseñas">RESEÑA #6
+                            </h2>
+                            <p>
+                                <strong>De: María Cristina</strong><br><br>
+                                Los precios en la cafetería son muy accesibles, especialmente con las promociones para
+                                estudiantes. Esto hace que siempre sea una opción conveniente para un café o un almuerzo
+                                rápido sin tener que gastar mucho. ¡Siempre vuelvo por el excelente servicio y los
+                                buenos precios!
+                            </p>
+                            <div class="rating">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h3 class="recomendacionesReseña">Muy buenos precios y promociones para estudiantes.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles del carrusel -->
+        <a class="carousel-control-prev" href="#reseñaCarrusel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#reseñaCarrusel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Siguiente</span>
+        </a>
+    </div>
+
+
+
+
+    <!-- INFORMACIÓN -->
+    <div class="container-fluid contenedor" id="nosotros">
+        <div class="row nosotros">
+            <div class="col-md-4 infoPrincipios">
+                <div class="infoTexto">
+                    <h2 style="font-family: 'Times New Roman', Times, serif;"><strong>MISIÓN:</strong></h2>
+                    <p>
+                        Brindar una experiencia única excepcional, combinando buen café, snacks variados y un ambiente
+                        ideal para relajarse, estudiar o socializar en el campus.
+                    </p>
+                </div>
+                <div>
+                    <img src="img/coffe-1.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="col-md-4 infoPrincipios">
+                <div class="infoTexto">
+                    <h2 style="font-family: 'Times New Roman', Times, serif;"><strong>VISIÓN:</strong></h2>
+                    <p>
+                        Ser la cafetería preferida por la comunidad universitaria, ofreciendo un espacio acogedor con
+                        productos de calidad que acompañen el estudio y el trabajo.
+                    </p>
+                </div>
+                <div>
+                    <img src="img/coffee-2.jpg" style="width:100%">
+                </div>
+            </div>
+            <div class="col-md-4 infoPrincipios">
+                <div class="infoTexto">
+                    <h2 style="font-family: 'Times New Roman', Times, serif;"><strong>VALORES:</strong></h2>
+                    <p>
+                        Valoramos el respeto, la responsabilidad y el trabajo en equipo. Creemos que
+                        estos valores son fundamentales para brindar un servicio excepcional.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://www.workmeter.com/wp-content/uploads/2022/07/valores-de-una-empresa-scaled.jpg"
+                        style="width:100% ; max-height: 100vh;">
+                </div>
+            </div>
+            <div class="col-md-4 infoPrincipios">
+                <div class="infoTexto">
+                    <h2 style="font-family: 'Times New Roman', Times, serif;"><strong>NOSOTROS:</strong></h2>
+                    <p>
+                        Una cafetería moderna dentro del campus, dedicada a servir alimentos frescos y bebidas
+                        deliciosas, pensada para estudiantes y personal universitario.
+                    </p>
+                </div>
+                <div>
+                    <img src="https://media.licdn.com/dms/image/v2/D4E22AQFXpnfRY9OSxA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1689257839343?e=2147483647&v=beta&t=mbcOHlyqSDtCtuPZ_SCcpGiNiF_yBhIk7HLvLRUwl-A"
+                        style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Horario de Reservas (online):</h4>
+                    <ul>
+                        <li>Lunes a Viernes: 8:00 AM - 2:00 PM</li>
+                        <li>Nota: Las reservas deben ser recogidas el mismo día.</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Información de la Cafetería:</h4>
+                    <ul>
+                        <li>Ubicación: Campus Universitario, Chorrillos, Lima</li>
+                        <li>Teléfono: +51 987 654 321</li>
+                        <li>Email: contacto@cafeteriauniversitaria.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <!-- Efecto del encabezado al desplazar el scrollbar -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('menu container');
+            if (window.scrollY > 80) { // Cambia este valor según el punto en el que quieres que cambie el color
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    <!-- Script de Animacion para la seccion de MENU RELEVANTE -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.service1, .service2, .service-txt');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible'); // Si sale de la vista, remueve la clase
+                    }
+                });
+            }, { threshold: 0.3 }); // Se activa cuando el 30% del elemento es visible en la pantalla
+
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        // Script de Animacion para la seccion de INFORMACION 
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const cards = document.querySelectorAll('.infoPrincipios');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible'); // Reinicia la animación al salir de la vista
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>

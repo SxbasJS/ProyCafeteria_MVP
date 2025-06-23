@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú | Cafetería UTP</title>
+    <link rel="shortcut icon" href="img/LogoCafe.webp" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet/less" type="text/css" href="menu.less" />
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="header">
+        <div class="menu container" id="menu-container">
+            <a href="index.html" class="logo"><img src="img/LogoCafe.webp" alt="" class="MainLogo"></a>
+            <!-- Colocar el logo -->
+            <input type="checkbox" id="menu">
+            <label for="menu">
+                <img src="img/menu.png" class="menu-icono" alt="">
+            </label>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="menu.html">Menú </a></li>
+                    <li><a href="Reserva.html">Reserva</a></li>
+                    <li><a href="galeria.html">Galería</a></li>
+
+                </ul>
+            </nav>
+        </div>
+
+        <div class="header-content container">
+            <h1>CAFETERIA UTP</h1>
+            <p><strong>¡Nuestra Carta!</strong></p>
+            <p>
+                Bienvenido al apartado de la Carta: Aquí podrás encontrar gran variedad del menú de comidas junto a
+                grandes
+                ofertas que ofrece nuestra cafetería.
+            </p>
+        </div>
+    </header>
+
+
+
+    <!-- SECCIONES DEL MENÚ -->
+    <section class="menu-container" id="menu-container">
+        <section class="menu-section container">
+            <h2 class="text-center mb-4">Platos a la Carta</h2>
+            <div class="menu-carousel">
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://i.ytimg.com/vi/sWXRJbGi6yQ/maxresdefault.jpg" class="img-fluid"
+                            alt="Burger 1">
+                        <h5 class="mt-2">Lomo Saltado</h5>
+                        <p>S/20.90</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Lomo Saltado</h5>
+                        <p>Un delicioso plato típico peruano con tiras de lomo de res salteadas con cebolla, tomate,
+                            papas
+                            fritas y arroz. Perfecto para los amantes de la comida criolla.</p> <br>
+                        <p>S/20.90</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://tofuu.getjusto.com/orioneat-prod/o68sYfXjH6DrynZbu-SecoNorte%C3%B1o.jpg"
+                            class="img-fluid" alt="Burger 2">
+                        <h5 class="mt-2">Cabrito a la Norteña</h5>
+                        <p>S/25.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Cabrito a la Norteña</h5>
+                        <p>Jugoso cabrito guisado con un toque norteño, acompañado de arroz y papas, un plato
+                            tradicional
+                            lleno de sabor y tradición.</p> <br>
+                        <p>S/25.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://cdn.joinnus.com/blog/wp-content/uploads/2018/12/14163929/causas-limenas-la-mejor-1000x600.jpg"
+                            class="img-fluid" alt="Burger 3">
+                        <h5 class="mt-2">Causa de Atún</h5>
+                        <p>S/18.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Causa de Atún</h5>
+                        <p>Una versión fresca de la clásica causa peruana, rellena de atún y acompañada de aguacate,
+                            servida
+                            fría y perfecta para disfrutar en cualquier ocasión.</p> <br>
+                        <p>S/18.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://origin.cronosmedia.glr.pe/large/2020/12/18/lg_5fdd5b4acf89f80dcc653f1d.jpg"
+                            class="img-fluid" alt="Burger 3">
+                        <h5 class="mt-2">Chaufa de Pollo</h5>
+                        <p>S/14.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Chaufa de Pollo</h5>
+                        <p>Arroz frito al estilo peruano con pechuga de pollo, verduras salteadas y un toque de salsa de
+                            soya, servido con un acompañante de huevo frito.</p> <br>
+                        <p>S/14.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/KRMQHXYYBFBI5KRDXUYY5AXH2A.jpg"
+                            class="img-fluid" alt="Burger 3">
+                        <h5 class="mt-2">Milanesa Napolitana</h5>
+                        <p>S/18.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Milanesa Napolitana</h5>
+                        <p>Deliciosa milanesa de carne empanada, cubierta con salsa de tomate, jamón y queso derretido,
+                            acompañada de papas fritas o ensalada fresca.</p> <br>
+                        <p>S/18.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE BEBIDAS -->
+        <section class="menu-section container">
+            <h2 class="text-center mb-4 mt-3">Bebidas</h2>
+            <div class="menu-carousel">
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://grupochios.com/wp-content/uploads/2022/02/coca-cola-personal.jpg"
+                            class="img-fluid" alt="Drink 1">
+                        <h5 class="mt-2">Coca Cola</h5>
+                        <p>S/3.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Coca Cola</h5>
+                        <p>La bebida gaseosa clásica que no puede faltar en tu comida, refrescante y llena de sabor para
+                            acompañar cualquier plato.</p> <br>
+                        <p>S/3.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/inca-kola.jpg"
+                            class="img-fluid" alt="Drink 2">
+                        <h5 class="mt-2">Inca Kola</h5>
+                        <p>S/2.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Inca Kola</h5>
+                        <p>La bebida más representativa del Perú, con su sabor único y refrescante, ideal para acompañar
+                            la
+                            comida peruana.</p> <br>
+                        <p>S/2.50</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://img.freepik.com/fotos-premium/imagenes-producto-fanta-alta-calidad-4k-ultra-hd_670382-121705.jpg"
+                            class="img-fluid" alt="Drink 3">
+                        <h5 class="mt-2">Fanta</h5>
+                        <p>S/2.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Fanta</h5>
+                        <p>Una bebida de naranja refrescante y burbujeante, ideal para quienes buscan un toque de
+                            dulzura y
+                            frescura en cada sorbo.</p> <br>
+                        <p>S/2.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://img.freepik.com/fotos-premium/bebida-color-naranja-vaso-plastico-aislado-sobre-fondo-blanco-concepto-bebidas-llevar_861799-4452.jpg"
+                            class="img-fluid" alt="Drink 3">
+                        <h5 class="mt-2">Jugo de Naranja</h5>
+                        <p>S/2.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Jugo de Naranja</h5>
+                        <p>Refrescante jugo natural de naranjas frescas, lleno de vitamina C, ideal para acompañar
+                            cualquier
+                            comida.</p> <br>
+                        <p>S/2.50</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSA3a_SN2IZ-f38DLI894_bPMM2jhKBhXT7jQ&s"
+                            class="img-fluid" alt="Drink 3">
+                        <h5 class="mt-2">Chicha</h5>
+                        <p>S/2.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Chicha</h5>
+                        <p>Bebida tradicional peruana elaborada a base de maíz morado, con un toque dulce y especias,
+                            perfecta para acompañar platos típicos.</p> <br>
+                        <p>S/2.50</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE SÁNDWICHES Y HAMBURGUESAS -->
+        <section class="menu-section container">
+            <h2 class="text-center mb-4">Sándwiches y Hamburguesas</h2>
+            <div class="menu-carousel">
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://img.freepik.com/fotos-premium/foto-stock-hamburguesa-clasica-aislada-blanco_940723-217.jpg"
+                            class="img-fluid" alt="Burger 1">
+                        <h5 class="mt-2">Hamburguesa Clásica</h5>
+                        <p>S/9.90</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Hamburguesa Clásica</h5>
+                        <p>Una hamburguesa tradicional con carne de res jugosa, acompañada de lechuga, tomate, cebolla,
+                            y salsa especial.</p> <br>
+                        <p>S/9.90</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://sabor.eluniverso.com/wp-content/uploads/2023/09/1hqq-scaled.jpg"
+                            class="img-fluid" alt="Burger 2">
+                        <h5 class="mt-2">Hamburguesa Queso Extremo</h5>
+                        <p>S/17.90</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Hamburguesa Queso Extremo</h5>
+                        <p>Hamburguesa con una generosa capa de queso derretido y una mezcla de ingredientes extra para
+                            los amantes del queso.</p> <br>
+                        <p>S/17.90</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://media.istockphoto.com/id/1203580318/es/foto/hamburguesa-vegana-de-tiras-de-pollo-a-base-de-plantas-sin-carne-en-un-bollo-de-trigo-integral.jpg?s=612x612&w=0&k=20&c=ex-qo7I9axfM1thP9isl9nEeRhU4gD1rHoZ_QTBHCZw="
+                            class="img-fluid" alt="Burger 3">
+                        <h5 class="mt-2">Hamburguesa de Pollo</h5>
+                        <p>S/15.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Hamburguesa de Pollo</h5>
+                        <p>Una hamburguesa de pollo crujiente con un toque sabroso, acompañada de ingredientes frescos
+                            para un bocado irresistible.</p> <br>
+                        <p>S/15.00</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://buenazo.cronosmedia.glr.pe/original/2023/04/25/6448830f1c68e76d5f6a426d.png"
+                            class="img-fluid" alt="Burger 3">
+                        <h5 class="mt-2">Pan con Pollo</h5>
+                        <p>S/15.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Pan con Pollo</h5>
+                        <p>Pan artesanal relleno de pechuga de pollo sazonada, con lechuga, tomate y una deliciosa salsa
+                            casera. Un sabor auténtico y delicioso.</p> <br>
+                        <p>S/15.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE POSTRES -->
+        <section class="menu-section container">
+            <h2 class="text-center mb-4">Postres</h2>
+            <div class="menu-carousel">
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://panoli.pe/wp-content/uploads/2016/03/IMG_0344-1.jpg" class="img-fluid">
+                        <h5 class="mt-2">Miloja</h5>
+                        <p>S/3.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Miloja</h5>
+                        <p>Exquisito postre tradicional, con capas de masa hojaldre y crema pastelera, espolvoreado con
+                            azúcar glas para darle un toque dulce y crujiente.</p> <br>
+                        <p>S/3.50</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://tb-static.uber.com/prod/image-proc/processed_images/b1aa99a400b2959c6ad8a90cac819c50/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg"
+                            class="img-fluid">
+                        <h5 class="mt-2">Crepas</h5>
+                        <p>S/3.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Crepas</h5>
+                        <p>Delgadas y suaves crepas rellenas de tu elección: Nutella, frutas frescas o crema pastelera,
+                            acompañadas de un toque de miel o chocolate derretido.</p> <br>
+                        <p>S/3.50</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://wongfood.vtexassets.com/arquivos/ids/590338-800-auto?v=638022412666330000&width=800&height=auto&aspect=true"
+                            class="img-fluid">
+                        <h5 class="mt-2">Pionono</h5>
+                        <p>S/3.50</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Pionono</h5>
+                        <p>Bizcocho suave y esponjoso relleno de crema pastelera, cubierto con una capa de merengue y
+                            decorado con frutas frescas o mermelada.</p> <br>
+                        <p>S/3.50</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="frente">
+                        <img src="https://t1.uc.ltmcdn.com/es/posts/4/2/6/como_hacer_un_queque_de_yogur_27624_600_square.jpg"
+                            class="img-fluid">
+                        <h5 class="mt-2">Queque</h5>
+                        <p>S/1.00</p>
+                    </div>
+                    <div class="dorso">
+                        <h5 class="mt-2">Queque</h5>
+                        <p>Delicioso pastel casero, esponjoso y húmedo, perfecto para acompañar con una taza de té o
+                            café. Disponible en sabores tradicionales como vainilla o chocolate.</p> <br>
+                        <p>S/1.00</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-row">
+                <div class="footer-links">
+                    <h4>Horario de Reservas (online):</h4>
+                    <ul>
+                        <li>Lunes a Viernes: 8:00 AM - 2:00 PM</li>
+                        <li>Nota: Las reservas deben ser recogidas el mismo día.</li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Información de la Cafetería:</h4>
+                    <ul>
+                        <li>Ubicación: Campus Universitario, Chorrillos, Lima</li>
+                        <li>Teléfono: +51 987 654 321</li>
+                        <li>Email: contacto@cafeteriauniversitaria.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CDN bootstrap y Less -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+    <!-- Efecto del encabezado al desplazar el scrollbar -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('menu-container');
+            if (window.scrollY > 80) { // Cambia este valor según el punto en el que quieres que cambie el color
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
+</body>
+
+</html>
