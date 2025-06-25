@@ -1,10 +1,11 @@
 // js/reserva.js
 
 $(document).ready(function() {
+    // 1. Declaración de variables globales dentro del scope de jQuery ready
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let clienteData = null; // Para almacenar los datos del cliente validado
 
-    // Función para calcular y mostrar el total
+    // 2. Función para calcular y mostrar el total
     function calculateAndDisplayTotal() {
         let total = 0;
         cart.forEach(item => {
@@ -13,11 +14,11 @@ $(document).ready(function() {
         $('#total-pagar').text(`S/ ${total.toFixed(2)}`);
     }
 
-    // Función para cargar los productos del carrito en la pantalla de reserva
+    // 3. Función para cargar los productos del carrito en la pantalla de reserva
     function loadCartProducts() {
         $('#reserved-products-list').empty();
         if (cart.length === 0) {
-            $('#reserved-products-list').append('<p id="empty-reservation-message" class="text-muted">No hay productos en el carrito para reservar.</p>');
+            $('#reserved-products-list').append('<li class="list-group-item d-flex justify-content-between align-items-center" id="empty-reservation-message">No hay productos en el carrito para reservar.</li>');
             $('#btn-confirmar').prop('disabled', true);
             return;
         }
@@ -26,12 +27,12 @@ $(document).ready(function() {
 
         cart.forEach(item => {
             const productHtml = `
-                <div class="card mb-2 product-in-cart" data-id="${item.id_producto}" data-original-stock="${item.stock_actual}">
+                <div class="card mb-2 product-in-cart" data-id="${item.id_producto}">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
                             <h5>${item.nombre_producto}</h5>
                             <p class="mb-0">Precio Unitario: S/ ${item.precio.toFixed(2)}</p>
-                            <p class="mb-0 text-muted">Stock Disponible: <span class="product-available-stock">${item.stock_actual}</span></p>
+                            <p class="mb-0 text-muted">Stock Disponible: <span class="product-available-stock">${item.stock_actual !== undefined ? item.stock_actual : 'N/D'}</span></p>
                         </div>
                         <div class="d-flex align-items-center">
                             <button class="btn btn-sm btn-outline-secondary decrease-quantity" data-id="${item.id_producto}"><i class="fas fa-minus"></i></button>
@@ -47,55 +48,63 @@ $(document).ready(function() {
         $('#btn-confirmar').prop('disabled', false); // Habilitar el botón de confirmar si hay productos
     }
 
-    // Cargar el stock real de los productos para la validación antes de mostrar el carrito
+    // 4. Función para cargar el stock real de los productos (CORREGIDA)
     async function fetchProductStocks() {
+        // No necesitamos recargar 'cart' desde localStorage aquí, ya se hizo al inicio del ready.
+        // Pero si esta función pudiera ser llamada independientemente, se podría necesitar.
+        // Para este flujo, 'cart' ya está actualizada con localStorage.
+
         const productIds = cart.map(item => item.id_producto);
-        if (productIds.length === 0) return;
+        
+        // Si el carrito está vacío, no se necesita hacer una llamada AJAX.
+        if (productIds.length === 0) {
+            loadCartProducts(); // Cargar la vista de carrito vacío
+            return;
+        }
 
         try {
             const response = await $.ajax({
-                url: 'Codigo_PHP/get_products.php', // Usamos el mismo script que devuelve productos
+                url: 'Codigo_PHP/get_products.php', // Asegúrate que este PHP acepta 'product_ids'
                 method: 'GET',
-                data: { product_ids: productIds.join(',') }, // Podrías modificar get_products.php para aceptar múltiples IDs
+                data: { product_ids: productIds.join(',') }, // Envía los IDs como string separado por comas
                 dataType: 'json'
             });
 
-            // Para simplificar, asumimos que get_products.php devolverá todos los productos o podemos modificarlo para filtrar por IDs.
-            // Por ahora, get_products.php devuelve todos y filtramos en JS. Lo ideal sería un nuevo endpoint get_product_stocks.php.
-            // Para este ejemplo, haremos una llamada para cada producto o modificar get_products.php para filtrar por un array de IDs.
-            // O, si get_products.php sin category_id devuelve todos, podemos mapear.
-            
-            // Si get_products.php devuelve todos los productos:
-            // Mejorar: Se debería crear un endpoint `get_product_stock.php` que reciba un array de IDs.
-            // Para este ejemplo, simularé que ya obtuvimos el stock correcto por producto.
-            // REALMENTE, deberías consultar el stock de cada producto individualmente en el backend
-            // o modificar get_products.php para aceptar una lista de IDs y devolver solo esos stocks.
+            // Actualizar la variable 'cart' con el stock_actual real de la base de datos
+            cart = cart.map(cartItem => {
+                const foundProduct = response.find(p => p.id_producto == cartItem.id_producto); // Usar '==' por si los tipos no coinciden (string vs number)
+                if (foundProduct) {
+                    // Si encontramos el producto, le añadimos/actualizamos la propiedad stock_actual
+                    return { 
+                        ...cartItem, 
+                        stock_actual: parseInt(foundProduct.stock_actual) 
+                    };
+                }
+                // Si el producto del carrito no se encontró en la respuesta del backend,
+                // significa que quizás fue eliminado de la DB. Lo devolvemos sin stock_actual para que filter lo quite.
+                return cartItem; 
+            }).filter(item => item.stock_actual !== undefined && item.stock_actual !== null); 
+            // Filtra para eliminar productos que no tienen un stock_actual válido (ej. no encontrados en DB)
 
-            // Por la complejidad de modificar get_products.php para recibir una lista de IDs en este momento,
-            // vamos a hacer una validación simple en el backend al procesar la reserva.
-            // Por ahora, asumiremos que `item.stock_actual` en el carrito es el último conocido,
-            // pero la validación final y crucial será en `process_reservation.php`.
-            
-            // Aquí, si tuvieras un endpoint que te diera el stock de productos específicos:
-            // response.forEach(p => {
-            //     let cartItem = cart.find(c => c.id_producto === p.id_producto);
-            //     if (cartItem) {
-            //         cartItem.stock_actual = p.stock_actual; // Actualizar el stock_actual en el carrito
-            //     }
-            // });
+            // IMPORTANTE: Guardar el carrito actualizado con stocks en localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
 
         } catch (error) {
             console.error("Error al obtener stock de productos:", error);
-            alert("No se pudo verificar el stock de algunos productos. Intente de nuevo.");
-            window.location.href = 'menu.html'; // Redirigir al menú si hay un problema
-            return;
+            alert("No se pudo verificar el stock de algunos productos. Intente de nuevo o contacte a soporte.");
+            // Si hay un error crítico, deshabilitar botón y mostrar mensaje
+            $('#btn-confirmar').prop('disabled', true);
+            $('#reserved-products-list').empty().append('<p class="text-danger">Error al cargar productos. Por favor, intente de nuevo.</p>');
+            return; 
         }
-        loadCartProducts(); // Cargar los productos del carrito después de intentar actualizar stocks
+
+        // Después de que 'cart' ha sido actualizado con los stocks, cargar la vista del carrito
+        loadCartProducts();
     }
 
 
-    // Validar Código UTP
-    $('#codigoUrbano').on('blur', function() { // Usar 'blur' para validar cuando el campo pierde el foco
+    // 5. Validar Código UTP
+    $('#codigoUrbano').on('blur', function() {
         const codigo = $(this).val();
         if (codigo.length > 0) {
             $.ajax({
@@ -128,16 +137,13 @@ $(document).ready(function() {
         }
     });
 
-    // Eventos para aumentar/disminuir cantidad
+    // 6. Eventos para aumentar/disminuir cantidad
     $(document).on('click', '.increase-quantity', function() {
         const productId = $(this).data('id');
         let item = cart.find(i => i.id_producto === productId);
         if (item) {
-             // Es CRUCIAL obtener el stock actual del servidor antes de permitir aumentar
-             // Para esta demostración, no haremos otra llamada AJAX, confiaremos en lo que
-             // se cargó inicialmente. La validación final la hará process_reservation.php
-             // si el stock es crítico.
-            if (item.cantidad < item.stock_actual) { // Validar contra el stock disponible
+            // Se valida contra el stock_actual que ya fue cargado por fetchProductStocks
+            if (item.cantidad < item.stock_actual) { 
                 item.cantidad++;
                 $(this).siblings('.product-quantity').text(item.cantidad);
                 calculateAndDisplayTotal();
@@ -163,13 +169,13 @@ $(document).ready(function() {
             calculateAndDisplayTotal();
             localStorage.setItem('cart', JSON.stringify(cart)); // Actualizar localStorage
             if (cart.length === 0) {
-                 $('#reserved-products-list').append('<p id="empty-reservation-message" class="text-muted">No hay productos en el carrito para reservar.</p>');
-                 $('#btn-confirmar').prop('disabled', true);
+                $('#reserved-products-list').append('<li class="list-group-item d-flex justify-content-between align-items-center" id="empty-reservation-message">El carrito está vacío.</li>');
+                $('#btn-confirmar').prop('disabled', true);
             }
         }
     });
 
-    // Validación de fecha y hora
+    // 7. Validación de fecha y hora
     $('#fechaRecojo, #horaRecojo').on('change', function() {
         const fecha = $('#fechaRecojo').val();
         const hora = $('#horaRecojo').val();
@@ -180,32 +186,50 @@ $(document).ready(function() {
         $('#horaValidation').text('');
 
         // Validar que no sea una fecha pasada
-        if (selectedDateTime < now && fecha !== '') {
-            $('#fechaValidation').text('La fecha de recojo no puede ser en el pasado.').addClass('text-danger');
+        if (fecha && selectedDateTime < now) { // Solo validar si se ha seleccionado una fecha
+            $('#fechaValidation').text('La fecha y hora de recojo no pueden ser en el pasado.').addClass('text-danger');
             return;
         }
 
         // Validar horario de 8 AM a 2 PM (14:00)
         const [hour, minute] = hora.split(':').map(Number);
-        if (hora && (hour < 8 || hour >= 14 || (hour === 14 && minute > 0))) {
+        if (hora && (hour < 8 || hour > 14 || (hour === 14 && minute > 0))) { // Cambié >=14 por >14 para incluir las 14:00
             $('#horaValidation').text('El horario de recojo debe ser entre 8:00 AM y 2:00 PM.').addClass('text-danger');
         } else if (fecha === now.toISOString().slice(0, 10) && selectedDateTime < now) {
-             $('#horaValidation').text('La hora de recojo no puede ser en el pasado para hoy.').addClass('text-danger');
+            // Revalidar para hoy si la hora ya pasó
+            $('#horaValidation').text('La hora de recojo no puede ser en el pasado para hoy.').addClass('text-danger');
         } else {
             $('#horaValidation').text('');
         }
     });
 
 
-    // Botón Cancelar Reserva
-    $('#btn-cancelar').on('click', function() {
-        if (confirm('¿Estás seguro de que deseas cancelar la reserva? El carrito se vaciará.')) {
+    // 8. Botón Cancelar Reserva
+$('#btn-cancelar').on('click', function() {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: '¡Estás a punto de cancelar tu reserva! El carrito se vaciará y perderás los productos seleccionados.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, cancelar reserva',
+        cancelButtonText: 'No, mantener reserva'
+    }).then((result) => {
+        if (result.isConfirmed) {
             localStorage.removeItem('cart'); // Vaciar el carrito
-            window.location.href = 'menu.html'; // Redirigir al menú
+            Swal.fire(
+                '¡Reserva Cancelada!',
+                'Tu reserva ha sido cancelada y el carrito está vacío.',
+                'success'
+            ).then(() => {
+                window.location.href = 'menu.html'; // Redirigir al menú
+            });
         }
     });
+});
 
-    // Enviar formulario de reserva
+    // 9. Enviar formulario de reserva
     $('#reservation-form').on('submit', function(e) {
         e.preventDefault();
 
@@ -233,89 +257,83 @@ $(document).ready(function() {
             alert('La fecha y hora de recojo no pueden ser en el pasado.');
             return;
         }
-        if (hour < 8 || hour >= 14 || (hour === 14 && minute > 0)) {
+        if (hour < 8 || hour > 14 || (hour === 14 && minute > 0)) {
             alert('El horario de recojo debe ser entre 8:00 AM y 2:00 PM.');
             return;
         }
 
+         // Confirmación final del usuario con SweetAlert
+        Swal.fire({
+            title: '¿Confirma su reserva?',
+            text: 'Una vez confirmada, no podrá deshacerse.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, confirmar reserva',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const reservationData = {
+                    id_cliente: clienteData.id_cliente,
+                    fecha_recojo: fechaRecojo,
+                    hora_recojo: horaRecojo,
+                    total_pagar: parseFloat($('#total-pagar').text().replace('S/ ', '')),
+                    productos: cart.map(item => ({
+                        id_producto: item.id_producto,
+                        cantidad: item.cantidad,
+                        precio: item.precio // Precio unitario al momento de la reserva
+                    }))
+                };
 
-        // Confirmación final del usuario
-        if (!confirm('¿Confirma su reserva? Una vez confirmada, no podrá deshacerse.')) {
-            return;
-        }
-
-        const reservationData = {
-            id_cliente: clienteData.id_cliente,
-            fecha_recojo: fechaRecojo,
-            hora_recojo: horaRecojo,
-            total_pagar: parseFloat($('#total-pagar').text().replace('S/ ', '')),
-            productos: cart.map(item => ({
-                id_producto: item.id_producto,
-                cantidad: item.cantidad,
-                precio: item.precio // Precio unitario al momento de la reserva
-            }))
-        };
-
-        $.ajax({
-            url: 'Codigo_PHP/process_reservation.php',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(reservationData),
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    alert('Reserva realizada con éxito. Generando PDF...');
-                    localStorage.removeItem('cart'); // Limpiar carrito después de reservar
-                    // Redirigir para descargar el PDF
-                    window.open(`Codigo_PHP/generate_pdf.php?id_reserva=${response.id_reserva}`, '_blank');
-                    // Opcional: Redirigir al menú después de un breve retraso
-                    setTimeout(() => {
-                        window.location.href = 'menu.html';
-                    }, 2000);
-                } else {
-                    alert('Error al procesar la reserva: ' + response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Error en la solicitud AJAX:', error);
-                alert('Ocurrió un error al intentar procesar su reserva. Por favor, intente de nuevo.');
+                $.ajax({
+                    url: 'Codigo_PHP/process_reservation.php',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(reservationData),
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            localStorage.removeItem('cart'); // Limpiar carrito después de reservar
+                            // SweetAlert para confirmación exitosa
+                            Swal.fire({
+                                title: '¡Reserva Confirmada!',
+                                text: 'Su reserva ha sido procesada con éxito. En breve se descargará su comprobante.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar'
+                            }).then(() => {
+                                // Redirigir para descargar el PDF
+                                window.open(`Codigo_PHP/generate_pdf.php?id_reserva=${response.id_reserva}`, '_blank');
+                                // Opcional: Redirigir al menú después de un breve retraso
+                                setTimeout(() => {
+                                    window.location.href = 'menu.html';
+                                }, 2000);
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error al procesar la reserva',
+                                text: response.message || 'Ocurrió un error desconocido.',
+                                icon: 'error',
+                                confirmButtonText: 'Entendido'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud AJAX:', error);
+                        Swal.fire({
+                            title: 'Error de Conexión',
+                            text: 'Ocurrió un error al intentar procesar su reserva. Por favor, intente de nuevo.',
+                            icon: 'error',
+                            confirmButtonText: 'Aceptar'
+                        });
+                    }
+                });
             }
         });
     });
 
-    // Cargar productos del carrito al cargar la página de reserva
-    // Primero, obtener el stock actual de cada producto desde la DB antes de mostrar
-    // Esto es crucial para la lógica de aumentar/disminuir cantidad.
-    // Una forma simple es recargar la info completa de productos que estaban en el carrito desde la BD.
-    if (cart.length > 0) {
-        const productIdsInCart = cart.map(item => item.id_producto);
-        $.ajax({
-            url: 'Codigo_PHP/get_products.php', // Reutilizamos este endpoint, podrías necesitar uno más específico
-            method: 'GET',
-            dataType: 'json',
-            success: function(allProducts) { // Suponiendo que get_products.php devuelve todos los productos si no se especifica categoría
-                cart = cart.map(cartItem => {
-                    const productInfo = allProducts.find(p => p.id_producto === cartItem.id_producto);
-                    if (productInfo) {
-                        return {
-                            ...cartItem,
-                            stock_actual: productInfo.stock_actual // Actualizar stock_actual en el carrito
-                        };
-                    }
-                    return cartItem; // Si no se encuentra, mantener el item como está
-                }).filter(item => item.stock_actual !== undefined); // Eliminar si el producto no se encontró en la DB (ej. fue eliminado)
-
-                // Ahora que el stock está actualizado en `cart`, cargamos los productos.
-                loadCartProducts();
-            },
-            error: function(xhr, status, error) {
-                console.error('Error al obtener el stock actual de los productos del carrito:', error);
-                alert('No se pudo cargar la información de stock de los productos. Redirigiendo al menú.');
-                localStorage.removeItem('cart');
-                window.location.href = 'menu.html';
-            }
-        });
-    } else {
-        loadCartProducts(); // Si el carrito está vacío, solo mostrar el mensaje
-    }
+    // 10. **Llamada inicial para cargar el carrito y el stock al cargar la página.**
+    // Esta es la única llamada necesaria para iniciar el proceso.
+    fetchProductStocks(); 
+    
 });

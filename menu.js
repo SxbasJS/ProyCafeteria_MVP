@@ -78,7 +78,7 @@ $(document).ready(function() {
                     const productCardHtml = `
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card h-100 shadow-sm">
-                                <img src="${product.imagen_url}" class="card-img-top" alt="${product.nombre_producto}">
+                                <img src="${product.imagen_url}" class="card-img-top" alt="${product.nombre_producto}" >
                                 <div class="card-body">
                                     <h5 class="card-title">${product.nombre_producto}</h5>
                                     <p class="card-text">${product.descripcion}</p>
