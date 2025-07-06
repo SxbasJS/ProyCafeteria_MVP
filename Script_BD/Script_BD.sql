@@ -54,7 +54,7 @@ CREATE TABLE `detalle_reserva` (
   FOREIGN KEY (`id_producto`) REFERENCES `productos`(`id_producto`)
 );
 
--- Tabla: usuarios_admin 
+-- Tabla: usuarios_admin prueba
 CREATE TABLE `usuarios_admin` (
   `id_usuario` INT(11) PRIMARY KEY AUTO_INCREMENT,
   `username` VARCHAR(50) UNIQUE NOT NULL,
