@@ -9,6 +9,7 @@ $response = ['success' => false, 'message' => ''];
 // Recibir los datos del frontend
 $data = json_decode(file_get_contents('php://input'), true);
 
+// Validar que los datos esenciales estén presentes
 if (!isset($data['id_cliente']) || !isset($data['fecha_recojo']) || !isset($data['hora_recojo']) || !isset($data['total_pagar']) || !isset($data['productos'])) {
     $response['message'] = 'Datos incompletos para la reserva.';
     echo json_encode($response);
@@ -22,13 +23,24 @@ $hora_recojo = $data['hora_recojo'];
 $total_pagar = $data['total_pagar'];
 $productos_carrito = $data['productos'];
 
+// Nuevos datos del frontend para el pago simulado
+$tipo_pago = isset($data['tipo_pago']) ? $data['tipo_pago'] : 'Efectivo'; // Por defecto 'Efectivo' si no se envía
+$pago_exitoso = isset($data['pago_exitoso']) ? (bool)$data['pago_exitoso'] : false; // Por defecto false si no se envía
+
+// Determinar el estado de la reserva basado en el pago simulado
+$estado_reserva = 'Pendiente'; // Estado por defecto
+if ($tipo_pago !== 'Efectivo' && $pago_exitoso) {
+    $estado_reserva = 'Confirmado'; // Si es pago electrónico y exitoso, se confirma automáticamente
+}
+
 // Iniciar transacción
 $conn->begin_transaction();
 
 try {
     // 1. Insertar en la tabla 'reservas'
-    $stmt_reserva = $conn->prepare("INSERT INTO reservas (id_cliente, fecha_reserva, hora_reserva, estado_reserva, total_pagar, tipo_pago) VALUES (?, ?, ?, 'Pendiente', ?, 'Efectivo')");
-    $stmt_reserva->bind_param("issd", $id_cliente, $fecha_recojo, $hora_recojo, $total_pagar);
+    // Ahora incluimos la columna 'tipo_pago' y el 'estado_reserva' dinámico
+    $stmt_reserva = $conn->prepare("INSERT INTO reservas (id_cliente, fecha_reserva, hora_reserva, estado_reserva, total_pagar, tipo_pago) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt_reserva->bind_param("issds", $id_cliente, $fecha_recojo, $hora_recojo, $estado_reserva, $total_pagar, $tipo_pago);
     
     if (!$stmt_reserva->execute()) {
         throw new Exception("Error al insertar reserva: " . $stmt_reserva->error);
@@ -47,6 +59,11 @@ try {
         $stmt_check_stock->bind_param("i", $id_producto);
         $stmt_check_stock->execute();
         $result_stock = $stmt_check_stock->get_result();
+        
+        if ($result_stock->num_rows === 0) {
+            throw new Exception("Producto con ID " . $id_producto . " no encontrado.");
+        }
+        
         $current_stock = $result_stock->fetch_assoc()['stock_actual'];
         $stmt_check_stock->close();
 
@@ -76,6 +93,8 @@ try {
     $response['success'] = true;
     $response['message'] = 'Reserva realizada con éxito.';
     $response['id_reserva'] = $id_reserva;
+    $response['estado_reserva'] = $estado_reserva; // Añadir el estado final al response
+    $response['tipo_pago'] = $tipo_pago; // Añadir el tipo de pago al response
 
 } catch (Exception $e) {
     // Si algo falla, revertir la transacción

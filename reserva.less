@@ -539,3 +539,164 @@ h3 {
         position: absolute;
     }
 }
+
+/* --- Nuevos estilos para las secciones de pago --- */
+
+/* Estilos para el contenedor de opciones de método de pago */
+#opciones-metodo-pago {
+    background-color: @color2;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Espacio debajo de esta sección */
+    h3 {
+        color: @color1;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    p {
+        font-size: 1.1em;
+        color: @color3;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 1.1em;
+        font-weight: 500;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+    .btn-primary {
+        background-color: @color1;
+        border-color: @color1;
+        &:hover {
+            background-color: darken(@color1, 10%);
+            border-color: darken(@color1, 10%);
+            transform: translateY(-2px);
+        }
+    }
+    .btn-success {
+        background-color: #28a745; // Color verde de éxito para Yape
+        border-color: #28a745;
+        &:hover {
+            background-color: darken(#28a745, 10%);
+            border-color: darken(#28a745, 10%);
+            transform: translateY(-2px);
+        }
+    }
+}
+
+/* Estilos para las secciones de pago con tarjeta y Yape */
+#seccion-pago-tarjeta,
+#seccion-pago-yape {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    h3 {
+        color: @color1;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+    .form-label {
+        color: @color1;
+        font-weight: 500;
+    }
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid @color2;
+        padding: 10px 15px;
+        font-size: 1em;
+    }
+    .btn {
+        padding: 12px 20px;
+        font-size: 1.1em;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+        &.btn-primary { // Para el botón de procesar tarjeta
+            background-color: @color3;
+            border-color: @color3;
+            &:hover {
+                background-color: darken(@color3, 10%);
+                border-color: darken(@color3, 10%);
+                transform: translateY(-2px);
+            }
+        }
+        &.btn-success { // Para el botón de confirmar Yape
+            background-color: #28a745;
+            border-color: #28a745;
+            &:hover {
+                background-color: darken(#28a745, 10%);
+                border-color: darken(#28a745, 10%);
+                transform: translateY(-2px);
+            }
+        }
+    }
+    p {
+        color: #555;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+}
+
+/* Estilos para los mensajes de resultado (éxito/error) */
+#mensaje-resultado-tarjeta,
+#mensaje-resultado-yape {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: 600;
+    text-align: center;
+    background-color: lighten(@color2, 10%); /* Un fondo suave para los mensajes */
+}
+
+/* Estilos para el mensaje final de reserva confirmada */
+#reserva-confirmada-final {
+    background-color: #e9f7ef; /* Un verde muy claro */
+    border-color: #d4edda; /* Un borde verde suave */
+    color: #155724; /* Un texto verde oscuro */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    h2 {
+        color: #28a745; /* Verde de éxito */
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 1.15em;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    .btn-info {
+        background-color: @color3;
+        border-color: @color3;
+        &:hover {
+            background-color: darken(@color3, 10%);
+            border-color: darken(@color3, 10%);
+            transform: translateY(-2px);
+        }
+    }
+}
+
+/* Ajustes de responsive para las nuevas secciones */
+@media (max-width: 768px) {
+    #opciones-metodo-pago,
+    #seccion-pago-tarjeta,
+    #seccion-pago-yape,
+    #reserva-confirmada-final {
+        padding: 20px;
+    }
+    #opciones-metodo-pago .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 15px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

@@ -64,3 +64,6 @@ CREATE TABLE `usuarios_admin` (
   `fecha_creacion` DATETIME DEFAULT CURRENT_TIMESTAMP 
 );
 
+
+ALTER TABLE reservas ADD COLUMN tipo_pago VARCHAR(50) DEFAULT 'Efectivo';
+
