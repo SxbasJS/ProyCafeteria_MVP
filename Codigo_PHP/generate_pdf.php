@@ -1,6 +1,5 @@
 <?php
-// php/generate_pdf.php
-require_once '../vendor/autoload.php'; // Ajusta la ruta a autoload.php
+require_once '../vendor/autoload.php'; 
 use Dompdf\Dompdf;
 use Dompdf\Options;
 

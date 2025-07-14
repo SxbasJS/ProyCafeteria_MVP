@@ -1,5 +1,10 @@
 // js/reserva.js
 
+document.getElementById('btnConfirmarReserva').addEventListener('click', function() {
+  document.getElementById('qrModal').style.display = 'block';
+});
+
+
 $(document).ready(function() {
     // 1. Declaración de variables globales dentro del scope de jQuery ready
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
