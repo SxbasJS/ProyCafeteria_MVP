@@ -1,34 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservas /Cafetería UTP</title>
+    <title>Reservas | Cafetería UTP</title>
     <link rel="shortcut icon" href="img/LogoCafe.webp" type="image/x-icon">
-    <!-- Less -->
-
     <link rel="stylesheet/less" type="text/css" href="reserva.less" />
     <script src="https://cdn.jsdelivr.net/npm/less"></script>
+    <script src="reserva.js" defer></script>
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12hP1JpIPli+Azbu1BjmaDxmWE9vLMtFtIANo/rmJf7nL4x4"
-        crossorigin="anonymous"></script>
-
-    <!-- Jquery -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-    <!-- Encabezado(header) -->
     <header class="header">
-        <div class="menu container" id="menu container">
+        <div class="menu container" id="menu-container">
             <a href="index.html" class="logo"><img src="img/LogoCafe.webp" alt="" class="MainLogo"></a>
-            <!-- Colocar el logo -->
             <input type="checkbox" id="menu">
             <label for="menu">
                 <img src="img/menu.png" class="menu-icono" alt="">
@@ -39,7 +33,7 @@
                     <li><a href="menu.html">Menú</a></li>
                     <li><a href="Reserva.html">Reserva</a></li>
                     <li><a href="galeria.html">Galería</a></li>
-
+                    <li><a href="login.php">Admin</a></li>
                 </ul>
             </nav>
         </div>
@@ -52,15 +46,64 @@
         </div>
     </header>
 
-    <!-- Contenido de Reserva -->
+    <main class="container my-5">
+        <h2 class="mb-4">Formulario de Reserva</h2>
+        <form id="reservation-form">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="codigoUrbano" class="form-label">Código UTP</label>
+                    <input type="text" class="form-control" id="codigoUrbano" placeholder="Ej. U202000001" required>
+                    <small id="codigoHelp" class="form-text text-muted">Ingresa tu código universitario, docente o
+                        administrativo.</small>
+                    <div id="codigoValidation" class="text-danger"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="nombresApellidos" class="form-label">Nombres y Apellidos</label>
+                    <input type="text" class="form-control" id="nombresApellidos" readonly required>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="fechaRecojo" class="form-label">Fecha de Recojo</label>
+                    <input type="date" class="form-control" id="fechaRecojo" required>
+                    <div id="fechaValidation" class="text-danger"></div>
+                </div>
+                <div class="col-md-6">
+                    <label for="horaRecojo" class="form-label">Hora de Recojo</label>
+                    <input type="time" class="form-control" id="horaRecojo" required>
+                    <div id="horaValidation" class="text-danger"></div>
+                </div>
+            </div>
+
+            <h4 class="mt-4 mb-3">Productos a Reservar</h4>
+            <div id="reserved-products-list" class="mb-4">
+                <p id="empty-reservation-message" class="text-muted">No hay productos en el carrito para reservar.</p>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4>Total a Pagar:</h4>
+                <h4 id="total-pagar">S/ 0.00</h4>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <button type="button" id="btn-cancelar" class="btn btn-danger me-3">Cancelar Reserva</button>
+                <button id="btnConfirmarReserva" class="btn btn-success">Ya pagué</button>
+                <!-- <button type="submit" id="btn-confirmar" class="btn btn-success">Confirmar Reserva</button><br> -->
+                <!-- <button id="btnConfirmarReserva" class="btn btn-warning">Generar QR de Yape</button> -->
+            </div>
+            <div id="qrModal">
+                <h3>Escanea el código QR para pagar</h3>
+                <img src="https://rootear.com/files/2015/07/qr.jpg" alt="Código QR de Yape" width="200">
+                <br><br>
+                
+            </div>
+
+        </form>
 
 
+    </main>
 
-
-
-
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-row">
@@ -83,20 +126,14 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/less"></script>
 
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-    <!-- Efecto del encabezado al desplazar el scrollbar -->
     <script>
         window.addEventListener('scroll', function () {
-            const header = document.getElementById('menu container');
-            if (window.scrollY > 80) { // Cambia este valor según el punto en el que quieres que cambie el color
+            const header = document.getElementById('menu-container'); // Ojo, en tu HTML original aquí decía 'menu container' con espacio
+            if (window.scrollY > 80) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
@@ -104,6 +141,9 @@
         });
     </script>
 
+    <script src="reserva.js"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
